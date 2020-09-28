@@ -1,0 +1,45 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/01/Mux.hdl
+
+/** 
+ * Multiplexor:
+ * out = a if sel == 0
+ *       b otherwise
+ */
+
+
+/**
+ * Disjunctive Normal Form:
+ * not a * bsel 
+ * or a * not b * not sel
+ * or ab * not sel
+ * or absel
+ *
+ * Reduced to :
+ * a * not b * not sel
+ * or ab
+ * or bs
+ */
+
+CHIP Mux {
+    IN a, b, sel;
+    OUT out;
+
+    PARTS:
+    //a * not b * not sel gate
+    Not(in=b, out=notb);
+    Not(in=sel, out=notsel);
+    And(a=a, b=notb, out=aNotb);
+    And(a=aNotb, b=notsel, out=aNotbNotsel);
+
+    //ab and bs gates
+    And(a=a, b=b, out=ab);
+    And(a=b, b=sel, out=bsel);
+
+    //out
+    Or(a=ab, b=bsel, out=abOrbsel);
+    Or(a=abOrbsel, b=aNotbNotsel, out=out);
+
+}

@@ -1,0 +1,14 @@
+//Custom chip by Simon Voyer
+
+/**
+ * Identity gate : out = in
+ */
+
+CHIP Identity16 {
+    IN in[16];
+    OUT out[16];
+
+    PARTS:
+    Not16(in=in,out=notout);
+    Not16(in=notout, out=out);
+}

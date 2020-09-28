@@ -1,0 +1,14 @@
+//Custom chip by Simon Voyer
+
+/**
+ * out = 1 if left bit is 1, out = 0 otherwise
+ */
+
+CHIP IsNegative16 {
+    IN in[16];
+    OUT out;
+
+    PARTS:
+    Mux(a=false, b=true, sel=in[15], out=out);
+    
+}
