@@ -1,2 +1,1 @@
-
-
+This is my version of the project from the book "Elements of Computing Systems" and the course "Build a Modern Computer from First Principles: From Nand to Tetris (Project-Centered Course)". The goal is to build a computer from the ground up, starting with Nand gates.
